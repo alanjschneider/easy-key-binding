@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script src="./index.js"></script>
+  <script>
+    const ekb = new EKB();
+
+    const handleBind = () => console.log('Shift R');
+
+    ekb.pressing().bind('Shift+R', handleBind);
+    // ekb.bind('Shift+R', handleBind);
+    ekb.bind('Ctrl+Left', () => console.log('Ctrl Left'));
+    ekb.bind('Ctrl+Up', () => console.log('Ctrl Up'));
+    ekb.bind('Ctrl+Right', () => console.log('Ctrl Right'));
+    ekb.bind('Ctrl+Down', () => console.log('Ctrl Down'));
+    // ekb.unbind('Shift+R', handleBind);
+  </script>
+</html>
