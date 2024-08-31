@@ -4,13 +4,19 @@ class EKB {
     arrowright: 'right',
     arrowup: 'up',
     arrowdown: 'down',
+    escape: 'esc',
+    delete: 'del',
+    meta: 'cmd',
+    capslock: 'caps',
+    insert: 'ins',
+    backspace: 'back',
+    ' ': 'space',
   };
 
   constructor(domElement = window) {
     this.domElement = domElement;
-    this.domElement.addEventListener('keydown', this.keyDown.bind(this));
+    this.domElement.addEventListener('keydown', this.#keyDown.bind(this));
     this.binds = {};
-    this.mode = 'keydown';
   }
 
   bind(key, listener) {
@@ -26,9 +32,8 @@ class EKB {
       requireCtrl: cleanKey.includes('ctrl'),
       requireAlt: cleanKey.includes('alt'),
       requireShift: cleanKey.includes('shift'),
+      splitedKeys: cleanKey.split('+'),
     };
-
-    this.mode = 'keyup';
   }
 
   unbind(key, listener) {
@@ -60,12 +65,8 @@ class EKB {
     delete this.binds[cleanKey];
   }
 
-  pressing() {
-    this.mode = 'pressing';
-    return this;
-  }
-
-  keyDown(event) {
+  #keyDown(event) {
+    console.log(event.key);
     for (const bindKey in this.binds) {
       const bind = this.binds[bindKey];
 
@@ -82,7 +83,7 @@ class EKB {
       const pressedKey = event.key.toLowerCase();
       if (pressedKey === 'shift' || pressedKey === 'alt') continue;
 
-      if (!bindKey.includes(this.map(pressedKey))) continue;
+      if (!bind.splitedKeys.includes(EKB.map(pressedKey))) continue;
 
       for (const listener of bind.listeners) {
         listener(event);
@@ -90,7 +91,11 @@ class EKB {
     }
   }
 
-  map(key) {
-    return EKB.MAPS[key] ?? key;
+  static map(key) {
+    return this.MAPS[key] ?? key;
   }
 }
+
+try {
+  module.exports = EKB;
+} catch (e) {}

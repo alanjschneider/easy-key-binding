@@ -1,0 +1,16 @@
+{
+  "name": "easy-key-bind",
+  "version": "0.1.0",
+  "description": "Binds keys events easly",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest ./index.test.js"
+  },
+  "keywords": ["easy", "key", "bind"],
+  "author": "alanjschneider",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jsdom": "^25.0.0"
+  }
+}
