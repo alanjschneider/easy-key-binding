@@ -1,5 +1,5 @@
-const { JSDOM } = require('jsdom');
-const EKB = require('../src/index.js');
+import { JSDOM } from 'jsdom';
+import { EKB } from '../src';
 
 describe('EKB', () => {
   let ekb;
@@ -11,21 +11,21 @@ describe('EKB', () => {
   });
 
   test('bind should add a listener to the key', () => {
-    const listener = jest.fn();
+    const listener = vi.fn();
     ekb.bind('a', listener);
     expect(ekb.binds.a.listeners).toEqual([listener]);
   });
 
   test('unbind should remove a listener from the key', () => {
-    const listener = jest.fn();
+    const listener = vi.fn();
     ekb.bind('a', listener);
     ekb.unbind('a', listener);
     expect(ekb.binds.a).toBeUndefined();
   });
 
   test('unbindAll should remove all listeners from the key', () => {
-    const listener = jest.fn();
-    const listener2 = jest.fn();
+    const listener = vi.fn();
+    const listener2 = vi.fn();
     ekb.bind('a', listener);
     ekb.bind('a', listener2);
     ekb.unbindAll('a');
@@ -33,7 +33,7 @@ describe('EKB', () => {
   });
 
   test('should call listener if key is pressed', () => {
-    const listener = jest.fn();
+    const listener = vi.fn();
     ekb.bind('Enter', listener);
 
     const event = new dom.window.KeyboardEvent('keydown', {
@@ -49,7 +49,7 @@ describe('EKB', () => {
   });
 
   test('should call listener if key is bound with ctrl', () => {
-    const listener = jest.fn();
+    const listener = vi.fn();
     ekb.bind('Ctrl+Enter', listener);
 
     const event = new dom.window.KeyboardEvent('keydown', {
@@ -66,7 +66,7 @@ describe('EKB', () => {
   });
 
   test('should not call listener if key is bound with ctrl and ctrl is not pressed', () => {
-    const listener = jest.fn();
+    const listener = vi.fn();
     ekb.bind('Ctrl+Enter', listener);
 
     const event = new dom.window.KeyboardEvent('keydown', {
