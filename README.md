@@ -1,11 +1,10 @@
-# Easy Key Bind
+# Easy Key Binding
 
-Is a simple tool that helps to bind keyboard keys easly.
+Easy Key Binding is a simple tool that helps bind keyboard keys easily.
 
+## Usage
 
-### Usage
-
-If you want to execute a function only when ``Ctrl+Shift+P`` are pressed, you can do it in this way:
+If you want to execute a function only when ``Ctrl+Shift+P`` is pressed, you can do it this way:
 
 ```js
 const ekb = new EKB();
@@ -14,19 +13,19 @@ const openMenu = () => console.log('Open menu');
 ekb.bind('Ctrl+Shift+P', openMenu);
 ```
 
-EKB listen to ``window`` by default. If you need to listen events from a particular element, you need to pass it to the constructor:
+EKB listens to ``window`` by default. If you need to listen to events from a particular element, you need to pass it to the constructor:
 
 ```js
 const input = document.getElementById('input');
 const ekb = new EKB(input);
 
-// Clears the input when press Esc or Ctrl+Back
+// Clears the input when Esc or Ctrl+Back is pressed
 const clearInput = (e) => e.target.value = '';
 ekb.bind('Esc', clearInput);
 ekb.bind('Ctrl+Back', clearInput);
 ```
 
-To ubind a listener:
+To unbind a listener:
 
 ```js
 const ekb = new EKB();
@@ -49,9 +48,9 @@ ekb.bind('A', listener2);
 ekb.unbindAll('A');
 ```
 
-### Key maps
+## Key maps
 
-Some keys are mapped to be more simple:
+Some keys are mapped to be simpler:
 
 ```js
 'ArrowLeft' => 'Left'

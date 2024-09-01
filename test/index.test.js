@@ -1,5 +1,5 @@
 const { JSDOM } = require('jsdom');
-const EKB = require('./index.js');
+const EKB = require('../src/index.js');
 
 describe('EKB', () => {
   let ekb;
