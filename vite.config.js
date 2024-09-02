@@ -8,8 +8,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: './src/index.js',
-      name: 'ekb',
-      formats: ['es', 'cjs'],
+      name: 'EKB',
+      formats: ['es', 'cjs', 'umd'],
       fileName: (format) => `ekb.${format}.js`,
     },
     minify: 'terser',
