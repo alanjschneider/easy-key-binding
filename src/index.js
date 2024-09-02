@@ -17,7 +17,7 @@ export class EKB {
   #domElement;
   #binds;
 
-  /**
+  /**!
    * @param {HTMLElement} [domElement=window] - The DOM element to bind the keydown event to.
    */
   constructor(domElement = window) {
@@ -26,7 +26,7 @@ export class EKB {
     this.#binds = {};
   }
 
-  /**
+  /**!
    * Binds a key to a listener function.
    *
    * @param {string} key - The key to bind.
@@ -50,7 +50,7 @@ export class EKB {
     };
   }
 
-  /**
+  /**!
    * Removes a listener from the key binding.
    *
    * @param {string} key - The key to unbind the listener from.
@@ -77,7 +77,7 @@ export class EKB {
     }
   }
 
-  /**
+  /**!
    * Removes all bindings associated with the specified key.
    *
    * @param {string} key - The key to unbind.
@@ -90,7 +90,7 @@ export class EKB {
     delete this.#binds[cleanKey];
   }
 
-  /**
+  /**!
    * Handles the keydown event.
    *
    * @param {Event} event - The keydown event object.
@@ -120,7 +120,7 @@ export class EKB {
     }
   }
 
-  /**
+  /**!
    * Maps a key to its corresponding value.
    *
    * @param {string} key - The key to be mapped.
