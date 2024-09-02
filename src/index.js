@@ -15,7 +15,6 @@ export class EKB {
 
   // Private properties
   #domElement;
-  #binds;
 
   /**!
    * @param {HTMLElement} [domElement=window] - The DOM element to bind the keydown event to.
@@ -23,7 +22,7 @@ export class EKB {
   constructor(domElement = window) {
     this.#domElement = domElement;
     this.#domElement.addEventListener('keydown', this.#keyDown.bind(this));
-    this.#binds = {};
+    this.binds = {};
   }
 
   /**!
@@ -36,12 +35,12 @@ export class EKB {
   bind(key, listener) {
     const cleanKey = key.replace(/\s/g, '').toLowerCase();
 
-    if (cleanKey in this.#binds) {
-      this.#binds[cleanKey].listeners.push(listener);
+    if (cleanKey in this.binds) {
+      this.binds[cleanKey].listeners.push(listener);
       return;
     }
 
-    this.#binds[cleanKey] = {
+    this.binds[cleanKey] = {
       listeners: [listener],
       requireCtrl: cleanKey.includes('ctrl'),
       requireAlt: cleanKey.includes('alt'),
@@ -59,9 +58,9 @@ export class EKB {
   unbind(key, listener) {
     const cleanKey = key.replace(/\s/g, '').toLowerCase();
 
-    if (!(cleanKey in this.#binds)) return;
+    if (!(cleanKey in this.binds)) return;
 
-    const { listeners } = this.#binds[cleanKey];
+    const { listeners } = this.binds[cleanKey];
     const filteredListeners = [];
 
     for (const _listener of listeners) {
@@ -71,9 +70,9 @@ export class EKB {
     }
 
     if (filteredListeners.length === 0) {
-      delete this.#binds[cleanKey];
+      delete this.binds[cleanKey];
     } else {
-      this.#binds[cleanKey].listeners = filteredListeners;
+      this.binds[cleanKey].listeners = filteredListeners;
     }
   }
 
@@ -85,9 +84,9 @@ export class EKB {
   unbindAll(key) {
     const cleanKey = key.replace(/\s/g, '').toLowerCase();
 
-    if (!(cleanKey in this.#binds)) return;
+    if (!(cleanKey in this.binds)) return;
 
-    delete this.#binds[cleanKey];
+    delete this.binds[cleanKey];
   }
 
   /**!
@@ -96,8 +95,8 @@ export class EKB {
    * @param {Event} event - The keydown event object.
    */
   #keyDown(event) {
-    for (const bindKey in this.#binds) {
-      const bind = this.#binds[bindKey];
+    for (const bindKey in this.binds) {
+      const bind = this.binds[bindKey];
 
       if (
         (!event.ctrlKey && bind.requireCtrl) ||
