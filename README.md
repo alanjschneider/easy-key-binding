@@ -56,7 +56,7 @@ Some keys are mapped to be simpler:
 'ArrowLeft' => 'Left'
 'ArrowUp' => 'Up'
 'ArrowDown' => 'Down'
-'ArrowBottom' => 'Bottom'
+'ArrowRight' => 'Right'
 'Escape' => 'Esc'
 'Delete' => 'Del',
 'Meta (Windows key)' => 'Cmd',
@@ -75,7 +75,7 @@ const listener = () => console.log("Pressed");
 ekb.bind("Left", listener);
 ekb.bind("Up", listener);
 ekb.bind("Down", listener);
-ekb.bind("Bottom", listener);
+ekb.bind("Right", listener);
 ekb.bind("Esc", listener);
 ekb.bind("Del", listener);
 ekb.bind("Cmd", listener);

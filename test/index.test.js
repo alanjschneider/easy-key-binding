@@ -1,4 +1,3 @@
-import { JSDOM } from 'jsdom';
 import { EKB } from '../src';
 
 describe('EKB', () => {
@@ -6,8 +5,7 @@ describe('EKB', () => {
   let dom;
 
   beforeEach(() => {
-    dom = new JSDOM();
-    ekb = new EKB(dom.window);
+    ekb = new EKB(window);
   });
 
   test('bind should add a listener to the key', () => {
@@ -36,14 +34,14 @@ describe('EKB', () => {
     const listener = vi.fn();
     ekb.bind('Enter', listener);
 
-    const event = new dom.window.KeyboardEvent('keydown', {
+    const event = new window.KeyboardEvent('keydown', {
       key: 'Enter',
       code: 'Enter',
       keyCode: 13,
       bubbles: true,
     });
 
-    dom.window.document.dispatchEvent(event);
+    window.document.dispatchEvent(event);
 
     expect(listener).toHaveBeenCalled();
   });
@@ -52,7 +50,7 @@ describe('EKB', () => {
     const listener = vi.fn();
     ekb.bind('Ctrl+Enter', listener);
 
-    const event = new dom.window.KeyboardEvent('keydown', {
+    const event = new window.KeyboardEvent('keydown', {
       key: 'Enter',
       code: 'Enter',
       keyCode: 13,
@@ -60,7 +58,7 @@ describe('EKB', () => {
       bubbles: true,
     });
 
-    dom.window.document.dispatchEvent(event);
+    window.document.dispatchEvent(event);
 
     expect(listener).toHaveBeenCalled();
   });
@@ -69,7 +67,7 @@ describe('EKB', () => {
     const listener = vi.fn();
     ekb.bind('Ctrl+Enter', listener);
 
-    const event = new dom.window.KeyboardEvent('keydown', {
+    const event = new window.KeyboardEvent('keydown', {
       key: 'Enter',
       code: 'Enter',
       keyCode: 13,
@@ -77,7 +75,7 @@ describe('EKB', () => {
       bubbles: true,
     });
 
-    dom.window.document.dispatchEvent(event);
+    window.document.dispatchEvent(event);
 
     expect(listener).not.toHaveBeenCalled();
   });
