@@ -48,6 +48,85 @@ ekb.bind("A", listener2);
 ekb.unbindAll("A");
 ```
 
+## Installation
+
+### Using npm with a Bundler (Webpack, Vite, etc.)
+
+1. Install the package via npm:
+
+    ```bash
+    npm install easy-key-binding
+    ```
+
+2. Import the module into your project:
+
+    ```javascript
+    // Using CommonJS
+    const { EKB } = require("easy-key-binding");
+
+    // Using ES Modules
+    import { EKB } from "easy-key-binding";
+    ```
+
+---
+
+### Using EKB in the Browser
+
+#### Option 1: Include the UMD Build Directly
+
+1. Download the `ekb.umd.js` file from the `dist` folder.
+2. Include it in your HTML file using a `<script>` tag:
+
+    ```html
+    <script src="./ekb.umd.js"></script>
+    <!-- Your script using EKB goes here -->
+    ```
+
+3. EKB will be available globally. To create a new instance, access the `EKB` class from the global `EKB` object:
+
+    ```javascript
+    const ekb = new EKB.EKB();
+    ```
+
+---
+
+#### Option 2: Use ES Modules
+
+1. Download the `ekb.es.js` file from the `dist` folder.
+2. Import it in your JavaScript file:
+
+    ```javascript
+    import { EKB } from "./ekb.es.js";
+
+    const ekb = new EKB();
+    ```
+
+---
+
+#### Option 3: Use Import Maps (Modern Browsers)
+
+1. Download the `ekb.es.js` file from the `dist` folder.
+2. Define an import map in your HTML file:
+
+    ```html
+    <script type="importmap">
+        {
+            "imports": {
+                "easy-key-binding": "./ekb.es.js"
+            }
+        }
+    </script>
+    <!-- Your script using EKB goes here -->
+    ```
+
+3. Import the module in your JavaScript file:
+
+    ```javascript
+    import { EKB } from "easy-key-binding";
+
+    const ekb = new EKB();
+    ```
+
 ## Key maps
 
 Some keys are mapped to be simpler:

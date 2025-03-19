@@ -3,11 +3,11 @@
     "version": "1.0.0-beta.4",
     "description": "Easy Key Binding is a simple tool that helps bind keyboard keys easily.",
     "main": "./dist/ekb.cjs.js",
-    "module": "./dist/ekb.esm.js",
+    "module": "./dist/ekb.es.js",
     "type": "module",
     "exports": {
         ".": {
-            "import": "./dist/ekb.esm.js",
+            "import": "./dist/ekb.es.js",
             "require": "./dist/ekb.cjs.js"
         }
     },
